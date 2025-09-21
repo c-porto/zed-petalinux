@@ -86,6 +86,20 @@ namespace eval ::fsat_bd {
         connect_bd_net [get_bd_pins xlconstant_0/dout] [get_bd_pins zynq_ps/SPI0_SCLK_i]
         connect_bd_net [get_bd_pins xlconstant_0/dout] [get_bd_pins zynq_ps/SPI0_MOSI_i]
 
+        # GPIO EMIO and LEDS
+        set slice [create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_leds]
+        set_property -dict [list \
+            CONFIG.DIN_WIDTH {13} \
+            CONFIG.DIN_FROM {7} \
+            CONFIG.DIN_TO {0} \
+            CONFIG.DOUT_WIDTH {8} \
+        ] $slice
+
+        create_bd_port -dir O -from 7 -to 0 leds
+
+        connect_bd_net [get_bd_pins zynq_ps/GPIO_O] [get_bd_pins xlslice_leds/Din]
+        connect_bd_net [get_bd_pins xlslice_leds/Dout] [get_bd_ports leds]
+
         # System Reset
         connect_bd_net -net zynq_ps_fclk_clk0 [get_bd_pins zynq_ps/FCLK_CLK0] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins zynq_ps/M_AXI_GP0_ACLK]
         connect_bd_net -net zynq_ps_fclk_reset0_n [get_bd_pins zynq_ps/FCLK_RESET0_N] [get_bd_pins proc_sys_reset_0/ext_reset_in]
