@@ -2,4 +2,13 @@
 /include/ "zynq-zed.dtsi"
 
 / {
+    gpio-leds {
+        compatible = "gpio-leds";
+        user-led {
+            label = "user-led";
+            gpios = <&gpio0 54 0>;
+            default-state = "on";
+            linux,default-trigger = "heartbeat";
+        };
+    };
 };

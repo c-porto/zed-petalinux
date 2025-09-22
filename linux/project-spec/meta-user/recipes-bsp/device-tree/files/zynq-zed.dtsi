@@ -4,8 +4,6 @@
  *  Copyright (C) 2012 National Instruments Corp.
  */
 
-/include/ "zynq-7000.dtsi"
-
 / {
 	model = "Avnet ZedBoard board";
 	compatible = "avnet,zynq-zed", "xlnx,zynq-zed", "xlnx,zynq-7000";
