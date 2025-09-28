@@ -6,5 +6,6 @@ SRC_URI += "file://i2c-sensors.cfg \
             file://serial.cfg \
             file://enable-pwm.cfg \
             file://enable-overlays.cfg \
+            file://enable-vcan.cfg \
             file://usb.cfg \
             "
