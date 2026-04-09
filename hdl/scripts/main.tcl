@@ -12,6 +12,9 @@ set fh [open $version_file]
 set version [string trim [read $fh]]
 close $fh
 
+xhub::refresh_catalog [xhub::get_xstores xilinx_board_store]
+xhub::install [xhub::get_xitems *zedboard*]
+
 source $script_dir/bd.tcl
 
 # parse arguments
