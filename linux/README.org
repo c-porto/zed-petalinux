@@ -33,7 +33,7 @@ scripts/build-image.sh
 #+end_src
 
 *** External SSTATE and DOWNLOAD with Docker container
-The default ~DL_DIR~ and ~SSTATE_DIR~ variables are defined to ~/home/petalinux/sstate/downloads~ and ~/home/petalinux/sstate/sstate-cache/arm~, respectively. If local build is prefered remove those definitions from ~project-spec/meta-user/conf/petalinuxbsp.conf~. Otherwise, another directory to store sstate and downloads must be created and mounted inside the petalinux container. A possible directory structure to be mounted is the following:
+The default ~DL_DIR~ and ~SSTATE_DIR~ variables are defined to ~/home/petalinux/sstate/downloads~ and ~/home/petalinux/sstate/sstate-cache/arm~, respectively. If a local build is prefered, remove those definitions from [[https://github.com/c-porto/zed-petalinux/blob/master/linux/project-spec/meta-user/conf/petalinuxbsp.conf][petalinuxbsp.conf]]. Otherwise, a directory to store sstate and downloads must be created and mounted inside the petalinux container. A possible directory structure to be created is the following:
 
 #+begin_example
 sstatedir-peta2023
