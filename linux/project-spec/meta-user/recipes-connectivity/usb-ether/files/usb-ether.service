@@ -1,5 +1,5 @@
 [Unit]
-Description=Configure USB Ethernet Gadget
+Description=Configure USB Ethernet and Mass Storage Gadget
 Before=network.target
 
 [Service]
