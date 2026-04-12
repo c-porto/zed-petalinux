@@ -1,0 +1,49 @@
+#+title: Zynq Embedded Linux project
+
+** Table of Contents :toc:
+  - [[#building-the-project][Building the project]]
+
+** Building the project
+The embedded linux distribution is developed using the petalinux tool from AMD (Xilinx). This project leverages Docker to build the image, making it inherently simple to build.
+
+*** Build dependencies
+
+- Docker (Could be Desktop or Engine)
+- Petalinux 2023.1 installer
+
+*** Building the image
+
+After installing/downloading the dependencies the first step is to build the Docker image. For that one should run the following command in the emb-linux directory.
+
+
+#+begin_src bash
+docker build --build-arg PETA_RUN_FILE=<petalinux-installer-filename> -t petalinux:2023.1 .
+#+end_src
+
+After the Docker image builds, one should run the Docker container. This can be done by running the following command:
+
+#+begin_src bash
+docker run --rm -it -v <absolute-path-to-flatsat-project>/flatsat-platform2-firmware/emb-linux/:/home/petalinux/project petalinux:2023.1 /bin/bash
+#+end_src
+
+Finally, to build the petalinux image one should run, inside the container, the following:
+
+#+begin_src bash
+scripts/build-image.sh
+#+end_src
+
+*** External SSTATE and DOWNLOAD with Docker container
+The default ~DL_DIR~ and ~SSTATE_DIR~ variables are defined to ~/home/petalinux/sstate/downloads~ and ~/home/petalinux/sstate/sstate-cache/arm~, respectively. If local build is prefered remove those definitions from ~project-spec/meta-user/conf/petalinuxbsp.conf~. Otherwise, another directory to store sstate and downloads must be created and mounted inside the petalinux container. A possible directory structure to be mounted is the following:
+
+#+begin_example
+sstatedir-peta2023
+├── downloads
+└── sstate-cache
+    └── arm
+#+end_example
+
+Then, to actually use this directory and share it across builds, add the volume on the ~docker run~ command as below:
+
+#+begin_src bash
+docker run --rm -it -v <absolute-path-to-flatsat-project>/flatsat-platform2-firmware/emb-linux/:/home/petalinux/project -v <absolute-path-to-sstatedir>/sstatedir-peta2023:/home/petalinux/sstate petalinux:2023.1 /bin/bash
+#+end_src
