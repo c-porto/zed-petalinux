@@ -193,3 +193,5 @@ FILES:${PN} += " \
     ${sbindir}/${BPN}-fpga-control \
     ${systemd_unitdir}/system/${PN}.service \
 "
+
+COMPATIBLE_MACHINE:zynq = ".*"

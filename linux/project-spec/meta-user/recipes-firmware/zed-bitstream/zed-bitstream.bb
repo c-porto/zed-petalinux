@@ -8,5 +8,3 @@ inherit custom-bitstream
 SRC_URI = " \
         file://${BPN}.xsa \
         "
-
-COMPATIBLE_MACHINE:zynq = ".*"
