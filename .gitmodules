@@ -1,0 +1,3 @@
+[submodule "linux/project-spec/meta-rad-tests"]
+	path = linux/project-spec/meta-rad-tests
+	url = https://github.com/joaoclaudioeb/meta-rad-tests.git
