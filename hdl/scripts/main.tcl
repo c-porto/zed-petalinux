@@ -66,7 +66,7 @@ set_property -name "xpm_libraries" -value "XPM_CDC XPM_MEMORY" -objects $obj
 # Include XDC Constraints
 import_files -fileset constrs_1 $xdc_list
 
-::fsat_bd::create_base_design $proj_name $version
+fsat_bd::create_base_design $proj_name $version
 
 make_wrapper -files [get_files ${proj_dir}/${proj_name}/${proj_name}.srcs/sources_1/bd/$proj_name/${proj_name}.bd] -top
 import_files -force -norecurse ${proj_dir}/${proj_name}/${proj_name}.srcs/sources_1/bd/$proj_name/hdl/${proj_name}_wrapper.v
