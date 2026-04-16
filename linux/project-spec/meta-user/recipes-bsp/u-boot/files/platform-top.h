@@ -7,7 +7,7 @@
         "setenv dfu_alt_info " \
         "\"BOOT.BIN fat 0 1\;" \
         "boot.scr fat 0 1\;" \
-        "image.ub fat 0 1\";" \
+        "uImage fat 0 1\";" \
         "dfu 0 mmc 0\0"
 
 #define DFU_ALT_INFO_MMC_ROOTFS \
