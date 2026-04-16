@@ -15,10 +15,10 @@ set_property -dict {PACKAGE_PIN V12 IOSTANDARD LVCMOS33 PULLUP TRUE} [get_ports 
 set_property -dict {PACKAGE_PIN W10 IOSTANDARD LVCMOS33 PULLUP TRUE} [get_ports dac_spi_ss2_o]; # JB8
 
 # I2C
-set_property -dict {PACKAGE_PIN V9 IOSTANDARD LVCMOS18} [get_ports {iic_0_sda_io}]; # JB9
-set_property -dict {PACKAGE_PIN V8 IOSTANDARD LVCMOS18} [get_ports {iic_0_scl_io}]; # JB10
+set_property -dict {PACKAGE_PIN V9 IOSTANDARD LVCMOS33 PULLUP TRUE} [get_ports {iic_0_sda_io}]; # JB9
+set_property -dict {PACKAGE_PIN V8 IOSTANDARD LVCMOS33 PULLUP TRUE} [get_ports {iic_0_scl_io}]; # JB10
 
-# CAN 
+# CAN
 set_property -dict {PACKAGE_PIN AB9 IOSTANDARD LVCMOS33} [get_ports can_rx]; # JA9
 set_property -dict {PACKAGE_PIN AA8 IOSTANDARD LVCMOS33} [get_ports can_tx]; # JA10
 
